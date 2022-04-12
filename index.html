@@ -1,12 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href = "./assets/style.css"
+  </head>
+  <body>
+
+    <!-- header -->
+    <header class="jumbotron">
+      <h1 id="title" class="text-white text-center ">Weather Dashboard</h1>
+    </header>
+
+    <!-- div to hold the search field and buttons -->
+    <div class="container">
+      <div class="row">
+        <div class="col-3 border border-dark ">
+          <h4>Search for a city</h4>
+          <textarea name="" id=""></textarea>
+          <button class="btn btn-outline-primary">Search</button>
+          
+        </div>
+        <div class="col-9 border border-dark">
+          <h4>Placeholder text for city name, date and icon</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-3 border border-dark">
+          placeholder for dynamic buttons populated by JS for saved cities
+        </div>
+
+        <div class="col-9 border border-dark">Placeholder for outlook weather</div>
+      </div>
+    </div>
+
     
-</body>
+    <footer>
+       
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./assets/script.js"></script>
+  </body>
 </html>
