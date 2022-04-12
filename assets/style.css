@@ -22,3 +22,7 @@ header {
 
   text-shadow: 2px 2px #ccffcc;
 }
+
+#day-list {
+  list-style: none;
+}

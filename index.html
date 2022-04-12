@@ -33,7 +33,9 @@
           style="--fa-animation-duration: 2s; --fa-fade-opacity: 0.6"
         ></i>
       </div>
+
       <h1 id="title" class="text-white text-center">Weather Dashboard</h1>
+
       <div class="fa-3x text-center">
         <i class="fa-solid fa-cloud fa-fade"></i>
         <i class="fa-solid fa-bolt fa-fade"></i>
@@ -54,84 +56,108 @@
     <div class="container">
       <div class="row">
         <div class="col-3 border border-dark">
-          <form action="" id="user-form" class="card-body">
-            <label for="zip" class="form-label">Please enter a zip code</label>
+          <!-- Search by zip code  -->
+          <details>
+            <summary>Search by Zip Code</summary>
+            <form action="" id="user-form" class="card-body">
+              <label for="zip" class="form-label">Enter a zip code:</label>
 
-            <input type="text" name="zip" id="zip" autofocus="true" />
+              <input type="text" name="zip" id="zip" autofocus="true" />
 
-            <button id="sbmtBtn" type="submit" class="btn btn-outline-primary">
-              search
-            </button>
-          </form>
+              <button
+                id="sbmtBtn"
+                type="submit"
+                class="btn btn-outline-primary mt-1"
+              >
+                search
+              </button>
+            </form>
+          </details>
+          <!-- search by city name and state -->
+          <details>
+            <summary>Search by City and State</summary>
 
-          <form action="" id="state-form" class="card-body">
-            <label for="city" class="form-label"
-              >Please enter a city name</label
-            >
+            <form action="" id="state-form" class="card-body">
+              <label for="city" class="form-label"
+                >Please enter a city name</label
+              >
 
-            <input type="text" name="city" id="city" autofocus="true" />
+              <input type="text" name="city" id="city" autofocus="true" />
 
-            <select id="state">
-              <option value="AL">Alabama</option>
-              <option value="AK">Alaska</option>
-              <option value="AZ">Arizona</option>
-              <option value="AR">Arkansas</option>
-              <option value="CA">California</option>
-              <option value="CO">Colorado</option>
-              <option value="CT">Connecticut</option>
-              <option value="DE">Delaware</option>
-              <option value="DC">District Of Columbia</option>
-              <option value="FL">Florida</option>
-              <option value="GA">Georgia</option>
-              <option value="HI">Hawaii</option>
-              <option value="ID">Idaho</option>
-              <option value="IL">Illinois</option>
-              <option value="IN">Indiana</option>
-              <option value="IA">Iowa</option>
-              <option value="KS">Kansas</option>
-              <option value="KY">Kentucky</option>
-              <option value="LA">Louisiana</option>
-              <option value="ME">Maine</option>
-              <option value="MD">Maryland</option>
-              <option value="MA">Massachusetts</option>
-              <option value="MI">Michigan</option>
-              <option value="MN">Minnesota</option>
-              <option value="MS">Mississippi</option>
-              <option value="MO">Missouri</option>
-              <option value="MT">Montana</option>
-              <option value="NE">Nebraska</option>
-              <option value="NV">Nevada</option>
-              <option value="NH">New Hampshire</option>
-              <option value="NJ">New Jersey</option>
-              <option value="NM">New Mexico</option>
-              <option value="NY">New York</option>
-              <option value="NC">North Carolina</option>
-              <option value="ND">North Dakota</option>
-              <option value="OH">Ohio</option>
-              <option value="OK">Oklahoma</option>
-              <option value="OR">Oregon</option>
-              <option value="PA">Pennsylvania</option>
-              <option value="RI">Rhode Island</option>
-              <option value="SC">South Carolina</option>
-              <option value="SD">South Dakota</option>
-              <option value="TN">Tennessee</option>
-              <option value="TX">Texas</option>
-              <option value="UT">Utah</option>
-              <option value="VT">Vermont</option>
-              <option value="VA">Virginia</option>
-              <option value="WA">Washington</option>
-              <option value="WV">West Virginia</option>
-              <option value="WI">Wisconsin</option>
-              <option value="WY">Wyoming</option>
-            </select>
+              <select id="state" class="mt-1">
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="DC">District Of Columbia</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
+              </select>
 
-            <button id="sbmtBtn2" type="submit" class="btn btn-outline-primary">
-              search
-            </button>
-          </form>
+              <button
+                id="sbmtBtn2"
+                type="submit"
+                class="btn btn-outline-primary mt-1"
+              >
+                search
+              </button>
+            </form>
+          </details>
         </div>
         <div class="col-9 border border-dark">
-          <h4>Placeholder text for city name, date and icon</h4>
+          <h4 id="day-title">Coon Rapids MN 4/12/2022 icon</h4>
+          <div class="text-left">
+            <ul id="day-list" class="list-group mb-3">
+              <li id="day-temp" >Temp: </li>
+              <li id="day-humid" >Humidity: </li>
+              <li id="day-wind">Wind: </li>
+              <li id="day-uv">UV index: </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
