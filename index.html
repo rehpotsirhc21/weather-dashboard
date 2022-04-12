@@ -31,9 +31,14 @@
     <div class="container">
       <div class="row">
         <div class="col-3 border border-dark">
-          <h4>Search for a city</h4>
-          <textarea name="" id=""></textarea>
-          <button class="btn btn-outline-primary">Search</button>
+          
+          <form action="" id="user-form" class="card-body">
+
+            <label for="zip" class="form-label">Please enter a zip code</label>
+  
+            <input type="text" name="zip" id="zip" autofocus="true" />
+  
+            <button id = "sbmtBtn" type="submit" class="btn btn-outline-primary">search</button>
         </div>
         <div class="col-9 border border-dark">
           <h4>Placeholder text for city name, date and icon</h4>
@@ -51,7 +56,6 @@
           5 day forcast:
           <div class="row">
             <div class="col border border-dark">day 1</div>
-
             <div class="col border border-dark">day 2</div>
             <div class="col border border-dark">day 3</div>
             <div class="col border border-dark">day 4</div>
