@@ -174,7 +174,7 @@ function populateButtons() {
     buttonEl= document.createElement("button")
     buttonEl.textContent = key;
     buttonEl.setAttribute("type", "submit")
-    buttonEl.setAttribute("class", "btn btn-outline-primary mt-1 histBtn")
+    buttonEl.setAttribute("class", "btn btn-outline-primary mt-1 mb-1 histBtn")
     
     cityName = key
     buttonEl.setAttribute("id", cityName)
