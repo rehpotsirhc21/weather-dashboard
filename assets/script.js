@@ -52,7 +52,7 @@ $(sbmtBtn2).click(function (e) {
         cityName = data[0].name;
 
         localStorage.setItem(cityName, [lat, lon]);
-        getWeather(lat, lon)
+        getWeather(lat, lon);
       });
     } else {
       alert("You didnt enter valid search criteria try again");
@@ -103,7 +103,6 @@ function populateDaily(data) {
     Humidity: `${data.current.humidity}\u0025`,
     Wind: `${data.current.wind_speed} MPH `,
     ["UV Index"]: data.current.uvi,
-    
   };
 
   const keys = Object.keys(dailyForcast);
@@ -111,34 +110,29 @@ function populateDaily(data) {
 
   keys.forEach((key, index) => {
     const listItemEl = document.createElement("li");
-    const spanEl = document.createElement("span")
-    spanEl.setAttribute("id", key)
+    const spanEl = document.createElement("span");
+    spanEl.setAttribute("id", key);
 
-   
-    
     listItemEl.textContent = `${key}: `;
-    spanEl.textContent = `${dailyForcast[key]}`
-    $(listItemEl).append(spanEl)
+    spanEl.textContent = `${dailyForcast[key]}`;
+    $(listItemEl).append(spanEl);
     $(dailyList).append(listItemEl);
   });
 
   //UV index styles
 
-  const uvIndexEl = document.getElementById("UV Index")
-  
-  console.log(uvIndexEl)
+  const uvIndexEl = document.getElementById("UV Index");
+
+  console.log(uvIndexEl);
   if (dailyForcast["UV Index"] < 3) {
-      uvIndexEl.classList.add("green")
-      
+    uvIndexEl.classList.add("green");
   }
   if (dailyForcast["UV Index"] > 3 && dailyForcast["UV Index"] < 8) {
-    uvIndexEl.classList.add("orange")
-    
-}
-if (dailyForcast["UV Index"] > 7) {
-    uvIndexEl.classList.add("red")
-    
-}
+    uvIndexEl.classList.add("orange");
+  }
+  if (dailyForcast["UV Index"] > 7) {
+    uvIndexEl.classList.add("red");
+  }
 }
 
 function populateOutlook(data) {
