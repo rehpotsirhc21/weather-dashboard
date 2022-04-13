@@ -19,7 +19,7 @@ header {
 
 .btn {
   background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(173,201,189,0.7665441176470589) 100%);
-
+  max-width: 50%;
 }
 #title {
   text-shadow: 2px 2px #ccffcc;
