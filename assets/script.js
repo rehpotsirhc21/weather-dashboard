@@ -123,7 +123,6 @@ function populateDaily(data) {
 
   const uvIndexEl = document.getElementById("UV Index");
 
-  console.log(uvIndexEl);
   if (dailyForcast["UV Index"] < 3) {
     uvIndexEl.classList.add("green");
   }
@@ -140,36 +139,53 @@ function populateOutlook(data) {
     dateData = data.daily[i].dt;
     date = new Date(dateData * 1000);
     date = date.toLocaleDateString("en-us");
+    const divEl = document.getElementById(`data-${i}`);
     const icon = `${data.daily[i].weather[0].icon}`;
     const iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
-    for (let j = 1; j < 6; j++) {
-        const imgEl = document.createElement("img")
-        
-    }
 
+    const dateEl = document.createElement("p");
+    const imgEl = document.createElement("img");
+    imgEl.setAttribute("src", iconUrl);
+    dateEl.textContent = date;
+    divEl.append(dateEl);
+    divEl.append(imgEl);
 
     const outlookData = {
       Temp: `${data.daily[i].temp.day}\u00B0`,
       Wind: `${data.daily[i].wind_speed} MPH`,
       Humidity: `${data.daily[i].humidity}\u0025`,
     };
-    console.log(outlookData);
 
     const keys = Object.keys(outlookData);
     keys.forEach((key) => {
       const ulEl = document.getElementById(`day-${i}`);
       const liEl = document.createElement("li");
       liEl.textContent = `${key}: ${outlookData[key]}`;
-
       ulEl.appendChild(liEl);
     });
   }
 }
 
 /// populate info from local storage onto buttons to get results
-function onLoad() {
-  var help = localStorage.getItem("Coon Rapids");
-  help = JSON.parse(help);
-  console.log(typeof help);
-  console.log(help);
+function populateButtons() {
+  for (let [key, value] of Object.entries(localStorage)){
+    buttonEl= document.createElement("button")
+    buttonEl.textContent = key;
+    buttonEl.setAttribute("type", "submit")
+    buttonEl.setAttribute("class", "btn btn-outline-primary mt-1")
+    
+    cityName = key
+    buttonEl.setAttribute("id", cityName)
+    
+    buttonUi = document.getElementById("historyBtn")
+    console.log(buttonEl)
+    buttonUi.append(buttonEl)
+    value = JSON.parse(localStorage.getItem(key))
+      lat = value[0]
+      lon = value[1]
+      console.log(buttonEl.id)
+
+  }
+  
 }
+window.onload = populateButtons();

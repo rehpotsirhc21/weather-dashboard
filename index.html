@@ -13,6 +13,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=El+Messiri&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href = "./assets/style.css"
   </head>
@@ -159,31 +163,38 @@
         </div>
       </div>
     </div>
-
+<!-- section to display history buttons -->
     <div class="container">
       <div class="row">
-        <div class="col-3 border border-dark">
-          placeholder for dynamic buttons populated by JS for saved cities
+        <div id="historyBtn" class="col-2 border border-dark">
+         
         </div>
 
         <!-- extended outlook forcast  -->
 
-        <div class="col-9 border border-dark">
-         <h4> 5 Day Outlook: </h4>
+        <div class="col-10 border border-dark">
+         <h4 class="bg-light"> 5 Day Outlook: </h4>
           <div class="row">
-            <div id="data-1" class="col border border-dark">
+            <div class="col border border-dark">
+            <span id="data-1"> </span>
+            
+
               <ul class="outlookList" id="day-1"></ul>
             </div>
-            <div id="data-2" class="col border border-dark">
+            <div  class="col border border-dark">
+              <span id="data-2"></span>
               <ul class="outlookList" id="day-2"></ul>
             </div>
-            <div id="data-3" class="col border border-dark">
+            <div  class="col border border-dark">
+              <span id="data-3"></span>
               <ul class="outlookList" id="day-3"></ul>
             </div>
-            <div id="data-4" class="col border border-dark">
+            <div class="col border border-dark">
+              <span id="data-4"></span>
               <ul class="outlookList" id="day-4"></ul>
             </div>
-            <div id="data-5" class="col border border-dark">
+            <div  class="col border border-dark">
+              <span id="data-5"></span>
               <ul class="outlookList" id="day-5"></ul>
             </div>
           </div>

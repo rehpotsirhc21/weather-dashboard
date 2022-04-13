@@ -30,6 +30,8 @@ Date convert unix time: https://stackoverflow.com/questions/14786736/convert-uni
 
 Help with iterate through an object: https://flexiple.com/loop-through-object-javascript
 
+Help with local storage: https://stackoverflow.com/questions/8419354/get-html5-localstorage-keys
+
 repo link: https://github.com/rehpotsirhc21/weather-dashboard
 
 app link: https://rehpotsirhc21.github.io/weather-dashboard/
