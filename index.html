@@ -64,7 +64,7 @@
       <div class="row">
         <div class="col-12 col-lg-3  border border-dark">
           <!-- Search by zip code  -->
-          <details>
+          <details id="zSearch">
             <summary>Search by Zip Code</summary>
             <form action="" id="user-form" class="card-body">
               <label for="zip" class="form-label">Enter a zip code:</label>
@@ -81,7 +81,7 @@
             </form>
           </details>
           <!-- search by city name and state -->
-          <details>
+          <details id="cSearch">
             <summary>Search by City and State</summary>
 
             <form action="" id="state-form" class="card-body">
@@ -159,6 +159,7 @@
               <summary>Search by History</summary>
             </details>
           </div>
+          <Button id="refresh" class="btn btn-outline-primary mx-1 my-1 hide">Clear</Button>
         </div>
         <div class="col-12 col-lg-9 border border-dark">
           <h4 id="day-title">

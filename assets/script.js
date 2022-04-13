@@ -8,10 +8,16 @@ const cityNameEl = document.getElementById("city");
 const state = document.getElementById("state");
 const sbmtBtn = document.getElementById("sbmtBtn");
 const sbmtBtn2 = document.getElementById("sbmtBtn2");
+const clearBtn = document.getElementById("refresh");
+const buttonUi = document.getElementById("historyBtn");
 
+$(clearBtn).click(function () {
+  location.reload();
+});
 // click on search button by zip code
 $(sbmtBtn).click(function (e) {
   e.preventDefault();
+  clearSearch();
 
   let zipContent = zip.value.trim();
   $("#user-form").children("input").val("");
@@ -38,6 +44,8 @@ $(sbmtBtn).click(function (e) {
 // search by city name and state
 $(sbmtBtn2).click(function (e) {
   e.preventDefault();
+  $(clearBtn).removeClass("hide");
+  clearSearch();
   const cityNameContent = cityNameEl.value.trim();
   const stateContent = state.value;
   const geoCodeApiState = `https://api.openweathermap.org/geo/1.0/direct?q=${cityNameContent},${stateContent},US&limit=1&appid=3454b11b4e1a8d3727031927c205e6e6`;
@@ -85,7 +93,7 @@ function getWeather(lat, lon) {
 //function to populate the daily portion of the UI
 function populateDaily(data) {
   //create title for the day
-  
+
   const iconEl = document.getElementById("icon");
   const nameEl = document.getElementById("cname");
   const dateEl = document.getElementById("cdate");
@@ -134,7 +142,7 @@ function populateDaily(data) {
     uvIndexEl.classList.add("red");
   }
 }
-
+// function to populate 5 day outlook
 function populateOutlook(data) {
   for (let i = 1; i < 6; i++) {
     dateData = data.daily[i].dt;
@@ -147,7 +155,7 @@ function populateOutlook(data) {
     const dateEl = document.createElement("p");
     const imgEl = document.createElement("img");
     imgEl.setAttribute("src", iconUrl);
-    imgEl.setAttribute("class", "rounded mx-auto d-block")
+    imgEl.setAttribute("class", "rounded mx-auto d-block");
     dateEl.textContent = date;
     divEl.append(dateEl);
     divEl.append(imgEl);
@@ -170,34 +178,42 @@ function populateOutlook(data) {
 
 /// populate info from local storage onto buttons to get results
 function populateButtons() {
-  for (let [key, value] of Object.entries(localStorage)){
-    buttonEl= document.createElement("button")
+  for (let [key, value] of Object.entries(localStorage)) {
+    buttonEl = document.createElement("button");
     buttonEl.textContent = key;
-    buttonEl.setAttribute("type", "submit")
-    buttonEl.setAttribute("class", "btn btn-outline-primary mx-1 my-1 histBtn")
-    
-    cityName = key
-    buttonEl.setAttribute("id", cityName)
-    
-    buttonUi = document.getElementById("historyBtn")
-    
-    buttonUi.append(buttonEl)
-    value = JSON.parse(localStorage.getItem(key))
-      lat = value[0]
-      lon = value[1]
-      
+    buttonEl.setAttribute("type", "submit");
+    buttonEl.setAttribute("class", "btn btn-outline-primary mx-1 my-1 histBtn");
 
+    cityName = key;
+    buttonEl.setAttribute("id", cityName);
+
+    buttonUi.append(buttonEl);
+    value = JSON.parse(localStorage.getItem(key));
+    lat = value[0];
+    lon = value[1];
   }
-  
 }
 window.onload = populateButtons();
 
-$(".histBtn").click(function(e) {
-event.stopPropagation()
-const key = e.target.id
-const latLon = JSON.parse(localStorage.getItem(key))
-cityName = key
-lat = latLon[0]
-lon = latLon[1]
-getWeather(lat, lon)}
-)
+$(".histBtn").click(function (e) {
+  event.stopPropagation();
+  clearSearch();
+  const key = e.target.id;
+  const latLon = JSON.parse(localStorage.getItem(key));
+  cityName = key;
+  lat = latLon[0];
+  lon = latLon[1];
+  getWeather(lat, lon);
+});
+
+//function to clean up UI when a search is performed
+function clearSearch() {
+  const zipSearch = document.getElementById("zSearch");
+  const cSearch = document.getElementById("cSearch");
+  $(clearBtn).removeClass("hide");
+  $(cSearch).addClass("hide");
+  $(zSearch).addClass("hide");
+  if (buttonUi) {
+    $(buttonUi).addClass("hide");
+  }
+}
