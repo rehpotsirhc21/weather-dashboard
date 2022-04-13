@@ -26,3 +26,21 @@ header {
 #day-list {
   list-style: none;
 }
+
+.green {
+  background-color: green;
+  color: white;
+  padding: 3px;
+}
+
+.orange {
+  background-color: orange;
+  color: white;
+  padding: 3px;
+}
+
+.red {
+  background-color: red;
+  color: white;
+  padding: 3px;
+}

@@ -1,8 +1,10 @@
-// variables for lat and lon
+// variables
 let lat;
 let lon;
+let cityName;
+let date;
 let zip = document.getElementById("zip");
-const cityName = document.getElementById("city");
+const cityNameEl = document.getElementById("city");
 const state = document.getElementById("state");
 const sbmtBtn = document.getElementById("sbmtBtn");
 const sbmtBtn2 = document.getElementById("sbmtBtn2");
@@ -20,9 +22,9 @@ $(sbmtBtn).click(function (e) {
       response.json().then(function (data) {
         lat = data.lat;
         lon = data.lon;
-
-        const cityName = data.name.toLowerCase();
-        localStorage.setItem(cityName, [lat, lon]);
+        cityName = data.name;
+        // store info inlocal storage
+        localStorage.setItem(cityName, JSON.stringify([lat, lon]));
 
         getWeather(lat, lon);
       });
@@ -35,7 +37,7 @@ $(sbmtBtn).click(function (e) {
 // search by city name and state
 $(sbmtBtn2).click(function (e) {
   e.preventDefault();
-  const cityNameContent = cityName.value.trim();
+  const cityNameContent = cityNameEl.value.trim();
   const stateContent = state.value;
   const geoCodeApiState = `http://api.openweathermap.org/geo/1.0/direct?q=${cityNameContent},${stateContent},US&limit=1&appid=3454b11b4e1a8d3727031927c205e6e6`;
 
@@ -47,8 +49,9 @@ $(sbmtBtn2).click(function (e) {
       response.json().then(function (data) {
         lat = data[0].lat;
         lon = data[0].lon;
-        cityNameContent.toLowerCase();
-        localStorage.setItem(cityNameContent, [lat, lon]);
+        cityName = data[0].name;
+
+        localStorage.setItem(cityName, [lat, lon]);
       });
     } else {
       alert("You didnt enter valid search criteria try again");
@@ -65,9 +68,9 @@ function getWeather(lat, lon) {
       response.json().then(function (data) {
         console.log(data);
         let dateData = data.current.dt;
-        let date = new Date(dateData * 1000);
+        date = new Date(dateData * 1000);
+        date = date.toLocaleDateString("en-us");
 
-        console.log(date.toLocaleDateString("en-us"));
         populateDaily(data);
         populateOutlook(data);
       });
@@ -79,25 +82,72 @@ function getWeather(lat, lon) {
 
 //function to populate the daily portion of the UI
 function populateDaily(data) {
+  //create title for the day
+  const iconEl = document.getElementById("icon");
+  const nameEl = document.getElementById("cname");
+  const dateEl = document.getElementById("cdate");
+  const icon = data.current.weather[0].icon;
+  const iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+  const imageEl = document.createElement("img");
+  imageEl.setAttribute("src", iconUrl);
+
+  nameEl.append(cityName);
+  dateEl.append(date);
+  iconEl.appendChild(imageEl);
+
+  // create list for the day
   const dailyList = document.getElementById("day-list");
   const dailyForcast = {
-    Temp: data.current.temp,
-    Humidity: data.current.humidity,
-    Wind: data.current.wind_speed,
-    ['UV Index']: data.current.uvi,
-    Icon: data.current.weather[0].icon,
+    Temp: `${data.current.temp}\u00B0 `,
+    Humidity: `${data.current.humidity}\u0025`,
+    Wind: `${data.current.wind_speed} MPH `,
+    ["UV Index"]: data.current.uvi,
+    
   };
 
-  const keys = Object.keys(dailyForcast)
-  console.log(keys)
+  const keys = Object.keys(dailyForcast);
+  console.log(keys);
 
   keys.forEach((key, index) => {
-    console.log(`${key}: ${dailyForcast[key]}`);
-  })
-  
+    const listItemEl = document.createElement("li");
+    const spanEl = document.createElement("span")
+    spanEl.setAttribute("id", key)
 
+   
+    
+    listItemEl.textContent = `${key}: `;
+    spanEl.textContent = `${dailyForcast[key]}`
+    $(listItemEl).append(spanEl)
+    $(dailyList).append(listItemEl);
+  });
+
+  //UV index styles
+
+  const uvIndexEl = document.getElementById("UV Index")
+  
+  console.log(uvIndexEl)
+  if (dailyForcast["UV Index"] < 3) {
+      uvIndexEl.classList.add("green")
+      
+  }
+  if (dailyForcast["UV Index"] > 3 && dailyForcast["UV Index"] < 8) {
+    uvIndexEl.classList.add("orange")
+    
+}
+if (dailyForcast["UV Index"] > 7) {
+    uvIndexEl.classList.add("red")
+    
+}
 }
 
 function populateOutlook(data) {
   console.log("I am from the outlook function");
+}
+
+/// populate info from local storage onto buttons to get results
+function onLoad() {
+  var help = localStorage.getItem("Coon Rapids");
+  help = JSON.parse(help);
+  console.log(typeof help);
+  console.log(help);
 }
