@@ -40,7 +40,7 @@ $(sbmtBtn2).click(function (e) {
   e.preventDefault();
   const cityNameContent = cityNameEl.value.trim();
   const stateContent = state.value;
-  const geoCodeApiState = `http://api.openweathermap.org/geo/1.0/direct?q=${cityNameContent},${stateContent},US&limit=1&appid=3454b11b4e1a8d3727031927c205e6e6`;
+  const geoCodeApiState = `https://api.openweathermap.org/geo/1.0/direct?q=${cityNameContent},${stateContent},US&limit=1&appid=3454b11b4e1a8d3727031927c205e6e6`;
 
   $("#state-form").children("input").val("");
 
