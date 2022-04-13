@@ -151,11 +151,10 @@
         <div class="col-9 border border-dark">
           <h4 id="day-title">
             <span id="cname"></span> <span id="cdate"></span>
-            
           </h4>
           <div id="icon"></div>
           <div class="text-left">
-            <ul id="day-list" class="list-group mb-3"></ul>
+            <ul id="day-list" class="list-group mb-3 ul-container"></ul>
           </div>
         </div>
       </div>
@@ -167,22 +166,33 @@
           placeholder for dynamic buttons populated by JS for saved cities
         </div>
 
+        <!-- extended outlook forcast  -->
+
         <div class="col-9 border border-dark">
-          5 day forcast:
+         <h4> 5 Day Outlook: </h4>
           <div class="row">
-            <div class="col border border-dark">day 1</div>
-            <div class="col border border-dark">day 2</div>
-            <div class="col border border-dark">day 3</div>
-            <div class="col border border-dark">day 4</div>
-            <div class="col border border-dark">day 5</div>
+            <div id="data-1" class="col border border-dark">
+              <ul class="outlookList" id="day-1"></ul>
+            </div>
+            <div id="data-2" class="col border border-dark">
+              <ul class="outlookList" id="day-2"></ul>
+            </div>
+            <div id="data-3" class="col border border-dark">
+              <ul class="outlookList" id="day-3"></ul>
+            </div>
+            <div id="data-4" class="col border border-dark">
+              <ul class="outlookList" id="day-4"></ul>
+            </div>
+            <div id="data-5" class="col border border-dark">
+              <ul class="outlookList" id="day-5"></ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <footer></footer>
+    <!-- JS files  -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/script.js"></script>
   </body>
 </html>

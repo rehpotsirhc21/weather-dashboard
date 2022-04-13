@@ -12,6 +12,7 @@ const sbmtBtn2 = document.getElementById("sbmtBtn2");
 // click on search button by zip code
 $(sbmtBtn).click(function (e) {
   e.preventDefault();
+
   let zipContent = zip.value.trim();
   $("#user-form").children("input").val("");
   const geoCodeApi = `https://api.openweathermap.org/geo/1.0/zip?zip=${zipContent}&appid=3454b11b4e1a8d3727031927c205e6e6`;
@@ -106,7 +107,6 @@ function populateDaily(data) {
   };
 
   const keys = Object.keys(dailyForcast);
-  console.log(keys);
 
   keys.forEach((key, index) => {
     const listItemEl = document.createElement("li");
@@ -136,7 +136,34 @@ function populateDaily(data) {
 }
 
 function populateOutlook(data) {
-  console.log("I am from the outlook function");
+  for (let i = 1; i < 6; i++) {
+    dateData = data.daily[i].dt;
+    date = new Date(dateData * 1000);
+    date = date.toLocaleDateString("en-us");
+    const icon = `${data.daily[i].weather[0].icon}`;
+    const iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+    for (let j = 1; j < 6; j++) {
+        const imgEl = document.createElement("img")
+        
+    }
+
+
+    const outlookData = {
+      Temp: `${data.daily[i].temp.day}\u00B0`,
+      Wind: `${data.daily[i].wind_speed} MPH`,
+      Humidity: `${data.daily[i].humidity}\u0025`,
+    };
+    console.log(outlookData);
+
+    const keys = Object.keys(outlookData);
+    keys.forEach((key) => {
+      const ulEl = document.getElementById(`day-${i}`);
+      const liEl = document.createElement("li");
+      liEl.textContent = `${key}: ${outlookData[key]}`;
+
+      ulEl.appendChild(liEl);
+    });
+  }
 }
 
 /// populate info from local storage onto buttons to get results
