@@ -196,6 +196,7 @@ $(".histBtn").click(function(e) {
 event.stopPropagation()
 const key = e.target.id
 const latLon = JSON.parse(localStorage.getItem(key))
+cityName = key
 lat = latLon[0]
 lon = latLon[1]
 getWeather(lat, lon)}
