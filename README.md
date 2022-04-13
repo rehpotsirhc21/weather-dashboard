@@ -36,3 +36,4 @@ repo link: https://github.com/rehpotsirhc21/weather-dashboard
 
 app link: https://rehpotsirhc21.github.io/weather-dashboard/
 
+![full site screen print](./assets/screencapture-rehpotsirhc21-github-io-weather-dashboard-2022-04-13-17_26_44.png)
