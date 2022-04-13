@@ -47,3 +47,12 @@ header {
   color: white;
   padding: 3px;
 }
+
+p {
+  font-weight: bold;
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(176,40,175,0.7665441176470589) 100%);
+  color: white;
+  text-align: center;
+}
+
+

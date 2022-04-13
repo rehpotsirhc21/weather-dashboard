@@ -85,6 +85,7 @@ function getWeather(lat, lon) {
 //function to populate the daily portion of the UI
 function populateDaily(data) {
   //create title for the day
+  
   const iconEl = document.getElementById("icon");
   const nameEl = document.getElementById("cname");
   const dateEl = document.getElementById("cdate");
@@ -146,6 +147,7 @@ function populateOutlook(data) {
     const dateEl = document.createElement("p");
     const imgEl = document.createElement("img");
     imgEl.setAttribute("src", iconUrl);
+    imgEl.setAttribute("class", "rounded mx-auto d-block")
     dateEl.textContent = date;
     divEl.append(dateEl);
     divEl.append(imgEl);
@@ -172,20 +174,29 @@ function populateButtons() {
     buttonEl= document.createElement("button")
     buttonEl.textContent = key;
     buttonEl.setAttribute("type", "submit")
-    buttonEl.setAttribute("class", "btn btn-outline-primary mt-1")
+    buttonEl.setAttribute("class", "btn btn-outline-primary mt-1 histBtn")
     
     cityName = key
     buttonEl.setAttribute("id", cityName)
     
     buttonUi = document.getElementById("historyBtn")
-    console.log(buttonEl)
+    
     buttonUi.append(buttonEl)
     value = JSON.parse(localStorage.getItem(key))
       lat = value[0]
       lon = value[1]
-      console.log(buttonEl.id)
+      
 
   }
   
 }
 window.onload = populateButtons();
+
+$(".histBtn").click(function(e) {
+event.stopPropagation()
+const key = e.target.id
+const latLon = JSON.parse(localStorage.getItem(key))
+lat = latLon[0]
+lon = latLon[1]
+getWeather(lat, lon)}
+)
