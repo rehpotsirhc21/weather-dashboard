@@ -52,7 +52,7 @@ $(sbmtBtn2).click(function (e) {
         lon = data[0].lon;
         cityName = data[0].name;
 
-        localStorage.setItem(cityName, [lat, lon]);
+        localStorage.setItem(cityName, JSON.stringify([lat, lon]));
         getWeather(lat, lon);
       });
     } else {
