@@ -52,6 +52,7 @@ $(sbmtBtn2).click(function (e) {
         cityName = data[0].name;
 
         localStorage.setItem(cityName, [lat, lon]);
+        getWeather(lat, lon)
       });
     } else {
       alert("You didnt enter valid search criteria try again");
